@@ -35,4 +35,8 @@ public class PersonDAO {
         jdbcTemplate.update("UPDATE Person SET full_name=?, year_of_birth=? WHERE person_id=?",
                 person.getFullName(), person.getYearOfBirth(), id);
     }
+
+    public void delete(int id) {
+        jdbcTemplate.update("DELETE FROM Person WHERE person_id=?", id);
+    }
 }
