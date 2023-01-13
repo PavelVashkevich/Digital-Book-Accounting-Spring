@@ -11,5 +11,5 @@ CREATE TABLE BOOK
     name            varchar(100) NOT NULL UNIQUE,
     author          varchar(100) NOT NULL,
     year_of_publish int,
-    person_id       int          NOT NULL REFERENCES Person (person_id) ON DELETE SET NULL
+    person_id       int          REFERENCES Person (person_id) ON DELETE SET NULL
 );
