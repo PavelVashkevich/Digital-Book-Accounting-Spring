@@ -1,5 +1,6 @@
 package com.github.pavelvashkevich.controllers;
 
+import com.github.pavelvashkevich.dao.BookDAO;
 import com.github.pavelvashkevich.dao.PersonDAO;
 import com.github.pavelvashkevich.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,12 @@ import javax.validation.Valid;
 public class PeopleController {
 
     private final PersonDAO personDAO;
+    private final BookDAO bookDAO;
 
     @Autowired
-    public PeopleController(PersonDAO personDAO) {
+    public PeopleController(PersonDAO personDAO, BookDAO bookDAO) {
         this.personDAO = personDAO;
+        this.bookDAO = bookDAO;
     }
 
 
