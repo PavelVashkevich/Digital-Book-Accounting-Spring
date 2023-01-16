@@ -7,6 +7,9 @@
 <body>
 
 <p th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYearOfPublish()}">VALUE</p>
+
+<form th:methd="PATCH"
+
 <hr/>
 
 <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">

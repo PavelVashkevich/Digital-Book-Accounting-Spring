@@ -36,6 +36,9 @@ public class BookDAO {
                 book.getName(), book.getAuthor(), book.getYearOfPublish(), id);
     }
 
+    public List<Book> showPersonBooks(int personId) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{personId}, new BookMapper());
+    }
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Book WHERE book_id=?", id);

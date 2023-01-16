@@ -1,7 +1,6 @@
 package com.github.pavelvashkevich.dao;
 
 import com.github.pavelvashkevich.model.Book;
-import com.github.pavelvashkevich.model.Person;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
