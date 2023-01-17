@@ -31,6 +31,13 @@ public class PersonDAO {
                 .stream().findFirst().orElse(null);
     }
 
+    public Person showPersonBorrowedBook(int bookId) {
+        return jdbcTemplate
+                .query("SELECT person.person_id as person_id,full_name, year_of_birth " +
+                        "FROM Person JOIN Book ON book.person_id = person.person_id WHERE book_id=?",
+                        new Object[]{bookId}, new PersonMapper()).stream().findFirst().orElse(null);
+    }
+
     public void update(int id, Person person) {
         jdbcTemplate.update("UPDATE Person SET full_name=?, year_of_birth=? WHERE person_id=?",
                 person.getFullName(), person.getYearOfBirth(), id);
@@ -39,4 +46,6 @@ public class PersonDAO {
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Person WHERE person_id=?", id);
     }
+
+
 }

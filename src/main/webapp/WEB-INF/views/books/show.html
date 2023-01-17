@@ -8,7 +8,24 @@
 
 <p th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYearOfPublish()}">VALUE</p>
 
-<form th:methd="PATCH"
+<div th:if="${book.getPersonId() != null}">
+    <p th:text="${'Person who borrowed the book: ' + bookPersonInfo.getFullName()}">VALUE</p>
+    <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
+        <input type="submit" value="Release the book!">
+    </form>
+</div>
+
+<div th:if="${book.getPersonId() == null}">
+    <p>This book is free. Who would like to borrow the book?</p>
+    <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
+        <label for="person">Choose person:</label>
+        <select th:object="${person}" th:field="*{id}" id="person">
+            <option th:each="person : ${people}" th:value="${person.getId()}"
+                    th:text="${person.getFullName()}"></option>
+        </select>
+        <input type="submit" value="Assign the book!">
+    </form>
+</div>
 
 <hr/>
 
