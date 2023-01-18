@@ -34,7 +34,7 @@ public class PersonDAO {
     public Person showPersonBorrowedBook(int bookId) {
         return jdbcTemplate
                 .query("SELECT person.person_id as person_id,full_name, year_of_birth " +
-                        "FROM Person JOIN Book ON book.person_id = person.person_id WHERE book_id=?",
+                                "FROM Person JOIN Book ON book.person_id = person.person_id WHERE book_id=?",
                         new Object[]{bookId}, new PersonMapper()).stream().findFirst().orElse(null);
     }
 
