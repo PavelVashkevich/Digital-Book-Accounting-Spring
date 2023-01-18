@@ -49,7 +49,7 @@ public class BookController {
     public String showBook(@PathVariable("id") int id, @ModelAttribute("person") Person person, Model model) {
         model.addAttribute("book", bookDAO.show(id));
         model.addAttribute("people", personDAO.index());
-        model.addAttribute("bookPersonInfo",personDAO.showPersonBorrowedBook(id));
+        model.addAttribute("bookPersonInfo", personDAO.showPersonBorrowedBook(id));
         return "books/show";
     }
 
